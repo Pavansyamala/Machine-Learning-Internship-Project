@@ -8,6 +8,8 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+from src.components.data_transformation import DataTransformation 
+
 @dataclass
 class DataIngestionConfig:
     train_data_path: str=os.path.join('artifacts',"train.csv")
@@ -77,4 +79,10 @@ if __name__ == '__main__':
     train = pd.read_csv(train_p)
     test = pd.read_csv(test_p)
 
-    print(train.shape , test.shape)
+    print(train.columns , test.shape)
+
+    obj1 = DataTransformation() 
+    train_array , test_array , _  = obj1.initiate_data_transformation(train_path=train_p,test_path=test_p)
+
+    print(train_array[0],test_array[0])
+
