@@ -35,24 +35,16 @@ class DataTransformation:
             'Caudal_impulses']
 
             num_pipeline = Pipeline(
-                steps=[
-                ("scaler",StandardScaler())
-                ]
-            )
+                    steps=[
+                            ("scaler", StandardScaler()),
+                            ("transformer", PowerTransformer(method='yeo-johnson', standardize=False, copy=False))
+                            ]
+                        )
 
-            num_pipeline2 = Pipeline(
-                steps=[
-                    ("Transformer" , PowerTransformer(standardize=False)) , 
-                ]
-            )
+            preprocessor = ColumnTransformer(transformers=[
+                    ("Preprocessing", num_pipeline, numerical_columns)
+                    ])
 
-            # logging.info(f"Categorical columns: {categorical_columns}")
-            logging.info(f"Numerical columns: {numerical_columns}")
-
-            preprocessor= ColumnTransformer(transformers=[
-                ("Scaling",num_pipeline , numerical_columns),
-                ("Transformation",num_pipeline2,numerical_columns)
-            ])
 
             return preprocessor
         
@@ -75,10 +67,12 @@ class DataTransformation:
 
             smote_object = RandomOverSampler()
 
-            train_df , y_resampled= smote_object.fit_resample(train_df.iloc[:,2:16],train_df.iloc[:,-1])
+            print(train_df.shape)
+
+            train_df , y_resampled= smote_object.fit_resample(train_df.iloc[:,2:17],train_df.iloc[:,-1])
             train_df['Failure'] = y_resampled 
 
-            test_df , y_resampled = smote_object.fit_resample(test_df.iloc[:,2:16],test_df.iloc[:,-1])
+            test_df , y_resampled = smote_object.fit_resample(test_df.iloc[:,2:17],test_df.iloc[:,-1])
             test_df['Failure'] = y_resampled 
 
             input_feature_train_df=train_df.drop(columns=[target_column_name ],axis=1)
@@ -86,6 +80,8 @@ class DataTransformation:
 
             input_feature_test_df=test_df.drop(columns=[target_column_name],axis=1)
             target_feature_test_df=test_df[target_column_name]
+
+            print(input_feature_test_df.columns)
 
             logging.info(
                 f"Applying preprocessing object on training dataframe and testing dataframe."

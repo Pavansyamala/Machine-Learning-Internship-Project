@@ -85,4 +85,5 @@ if __name__ == '__main__':
     train_array , test_array , _  = obj1.initiate_data_transformation(train_path=train_p,test_path=test_p)
 
     print(train_array[0],test_array[0])
+    print(train_array.shape,test_array.shape)
 
