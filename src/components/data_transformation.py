@@ -75,6 +75,7 @@ class DataTransformation:
             test_df , y_resampled = smote_object.fit_resample(test_df.iloc[:,2:17],test_df.iloc[:,-1])
             test_df['Failure'] = y_resampled 
 
+
             input_feature_train_df=train_df.drop(columns=[target_column_name ],axis=1)
             target_feature_train_df=train_df[target_column_name]
 
