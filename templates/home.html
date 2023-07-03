@@ -1,0 +1,93 @@
+<html>
+<body>
+    <div class="login">
+       <h1>Railway Asset Failure Prediction</h1>
+   
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <h1>
+            <legend>Railway Asset Prediction</legend>
+        </h1>
+        <div class="mb-3">
+            <label class="form-label">TP2</label>
+            <input class="form-control" type="number" step="any" name="TP2" placeholder="Enter the value of TP2" required>
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">TP3</label>
+            <input class="form-control" type="number" step="any" name="TP3" placeholder="Enter the value of TP3" required>
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">H1</label>
+            <input class="form-control" type="number" step="any" name="H1" placeholder="Enter the value of H1" required>
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">DV_pressure</label>
+            <input class="form-control" type="number" step="any" name="DV_pressure" placeholder="Enter the value of DV_pressure" required>
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Reservoirs</label>
+            <input class="form-control" type="number" step="any" name="Reservoirs" placeholder="Enter the value of Reservoirs" required>
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Oil_temperature</label>
+            <input class="form-control" type="number" step="any" name="Oil_temperature"
+                placeholder="Enter your Oil_temperature value " required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Motor_current</label>
+            <input class="form-control" type="number" step="any" name="Motor_current"
+                placeholder="Enter your Motor_current value" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">COMP</label>
+            <input class="form-control" type="number" step="any" name="COMP"
+                placeholder="Enter your COMP value" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">DV_eletric</label>
+            <input class="form-control" type="number" step="any" name="DV_eletric"
+                placeholder="Enter your DV_eletric value" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Towers</label>
+            <input class="form-control" type="number" step="any" name="Towers"
+                placeholder="Enter your Towers value" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">MPG</label>
+            <input class="form-control" type="number" step="any" name="MPG"
+                placeholder="Enter your MPG value" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">LPS</label>
+            <input class="form-control" type="number" step="any" name="LPS"
+                placeholder="Enter your LPS value" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Pressure_switch</label>
+            <input class="form-control" type="number" step="any" name="Pressure_switch"
+                placeholder="Enter your Pressure_switch value" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Oil_level</label>
+            <input class="form-control" type="number" step="any" name="Oil_level"
+                placeholder="Enter your Oil_level value" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Caudal_impulses</label>
+            <input class="form-control" type="number" step="any" name= "Caudal_impulses"
+                placeholder="Enter your Caudal_impulses value" required/>
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Is Prediction Happened or Not" required />
+        </div>
+    </form>
+    <h2>
+       THE  prediction is {{results}}
+    </h2>
+   <body>
+</html>
